@@ -31,6 +31,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
-        destination_branch: main
-        # 仓库地址默认就是当前仓库
-        # 这里部署到 alexw914.github.io 仓库需要配置remote，见下方说明
+        external_repository: alexw914/alexw914.github.io  # 👈 目标仓库
+        publish_branch: main                              # 👈 部署到 main 分支
+        user_name: alexw914
+        user_email: lwu914@icloud.com
