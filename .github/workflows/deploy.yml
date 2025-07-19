@@ -1,0 +1,36 @@
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - main  # 监听主分支push事件
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Generate static files
+      run: |
+        npx hexo clean
+        npx hexo generate
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        destination_branch: main
+        # 仓库地址默认就是当前仓库
+        # 这里部署到 alexw914.github.io 仓库需要配置remote，见下方说明
