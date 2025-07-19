@@ -33,5 +33,5 @@ jobs:
         publish_dir: ./public
         external_repository: alexw914/alexw914.github.io  # 👈 目标仓库
         publish_branch: main                              # 👈 部署到 main 分支
-        user_name: alexw914
-        user_email: lwu914@icloud.com
+        user_name: github-actions
+        user_email: github-actions@github.com
