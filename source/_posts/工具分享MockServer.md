@@ -1,7 +1,7 @@
 ---
 title: 工具分享MockServer
 date: 2025-07-19 17:31:27
-categories: "工具"
+categories: Linux&工具
 tags:
   - docker
   - mockserver
