@@ -27,7 +27,7 @@ date: 2025-07-19 19:16:01
 </div>
 
 <p style="text-align: center; margin-top: 3em;">
-  <a href="/archives/"
+  <a href="/categories/"
      style="
        display: inline-block;
        padding: 14px 28px;
@@ -43,7 +43,7 @@ date: 2025-07-19 19:16:01
      onmouseover="this.style.backgroundColor='#005bb5'"
      onmouseout="this.style.backgroundColor='#0078e7'"
   >
-    📚 All Articles
+    📚 All Categories
   </a>
 </p>
 
