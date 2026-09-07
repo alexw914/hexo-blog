@@ -153,15 +153,17 @@ docker run -d \
 ### 1. 将PATH和LD_LIBRARY_PATH添加至系统环境内
 
 ```shell
+export CUDA_HOME=/usr/local/cuda
 export TRT_ROOT=/opt/nvidia/TensorRT-10.16.1.11
-export PATH="${TRT_ROOT}/bin:$PATH"
-export LD_LIBRARY_PATH="${TRT_ROOT}/lib:${LD_LIBRARY_PATH}"
+export PATH="$CUDA_HOME/bin:$TRT_ROOT/bin:$PATH"
+export LD_LIBRARY_PATH="$CUDA_HOME/lib64:$TRT_ROOT/lib:${LD_LIBRARY_PATH:-}"
 
 # 持久化到 ~/.bashrc，重新登录后依然生效
 cat >> ~/.bashrc <<'EOF'
+export CUDA_HOME=/usr/local/cuda
 export TRT_ROOT=/opt/nvidia/TensorRT-10.16.1.11
-export PATH="${TRT_ROOT}/bin:$PATH"
-export LD_LIBRARY_PATH="${TRT_ROOT}/lib:${LD_LIBRARY_PATH}"
+export PATH="$CUDA_HOME/bin:$TRT_ROOT/bin:$PATH"
+export LD_LIBRARY_PATH="$CUDA_HOME/lib64:$TRT_ROOT/lib:${LD_LIBRARY_PATH:-}"
 EOF
 ```
 
