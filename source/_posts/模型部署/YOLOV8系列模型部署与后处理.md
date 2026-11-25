@@ -1,8 +1,6 @@
 ---
 title: YOLOV8系列模型部署与后处理
 date: 2025-08-03 19:25:27
-categories: 
-  - 模型部署
 tags:
   - YOLOv8
 ---

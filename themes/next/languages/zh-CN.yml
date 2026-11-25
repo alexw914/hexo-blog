@@ -6,9 +6,9 @@ title:
   tag: 标签
   schedule: 日程表
 menu:
-  home: 首页
-  archives: 归档
-  categories: 分类
+  home: Home
+  archives: Archives
+  categories: Articles
   tags: 标签
   about: 关于
   search: 搜索
@@ -16,9 +16,9 @@ menu:
   sitemap: 站点地图
   commonweal: 公益 404
 sidebar:
-  overview: 站点概览
-  toc: 文章目录
-  links: 链接
+  overview: Overview
+  toc: Table of Contents
+  links: Links
 post:
   posted: 发表于
   edited: 更新于

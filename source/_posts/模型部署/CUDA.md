@@ -1,7 +1,6 @@
 ---
 title: CUDA
 date: 2026-03-18 22:41:26
-categories: 模型部署
 tags:
   - CUDA
 ---

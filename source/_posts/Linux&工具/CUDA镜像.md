@@ -1,8 +1,6 @@
 ---
 title: CUDA镜像
 date: 2026-08-27 17:41:26
-categories: 
-  - "Linux&工具"
 tags:
   - Linux
   - CUDA

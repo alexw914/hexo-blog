@@ -1,8 +1,6 @@
 ---
 title: Zsh 环境配置指南
 date: 2025-10-29 19:25:27
-categories: 
-  - "Linux&工具"
 tags:
   - Linux
 
