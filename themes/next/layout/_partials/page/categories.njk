@@ -1,28 +1,36 @@
 <ul class="category-cards">
-  {%- for category in site.categories.sort('name').toArray() %}
+  {%- for category in ordered_categories() %}
     <li>
       <div class="category-card">
         <span class="category-count">{{ category.length }} 篇文章</span>
-        <h2><a href="{{ url_for(category.path) }}">{{ escape_html(category.name) }}</a></h2>
+        {%- if category.path %}
+          <h2><a href="{{ url_for(category.path) }}">{{ escape_html(category.name) }}</a></h2>
+        {%- else %}
+          <h2>{{ escape_html(category.name) }}</h2>
+        {%- endif %}
       </div>
       <ul class="category-posts">
-        {%- for post in category.posts.sort('date', -1).limit(3).toArray() %}
-          <li>
-            <div class="category-post-heading">
-              <a class="category-post-title" href="{{ url_for(post.path) }}">{{ escape_html(post.title) }}</a>
-              <time datetime="{{ date(post.date, 'YYYY-MM-DD') }}">{{ date(post.date, 'YYYY-MM-DD') }}</time>
-            </div>
-            {%- if post.tags.length %}
-              <div class="category-post-meta">
-                {%- for tag in post.tags.toArray() %}
-                  <a href="{{ url_for(tag.path) }}" class="category-tag">{{ escape_html(tag.name) }}</a>
-                {%- endfor %}
+        {%- if category.posts.length %}
+          {%- for post in category.posts %}
+            <li>
+              <div class="category-post-heading">
+                <a class="category-post-title" href="{{ url_for(post.path) }}">{{ escape_html(post.title) }}</a>
+                <time datetime="{{ date(post.date, 'YYYY-MM-DD') }}">{{ date(post.date, 'YYYY-MM-DD') }}</time>
               </div>
-            {%- endif %}
-          </li>
-        {%- endfor %}
-        {%- if category.length > 3 %}
-          <li><a class="category-more" href="{{ url_for(category.path) }}" aria-label="查看{{ escape_html(category.name) }}的全部 {{ category.length }} 篇文章">…</a></li>
+              {%- if post.tags.length %}
+                <div class="category-post-meta">
+                  {%- for tag in post.tags.toArray() %}
+                    <a href="{{ url_for(tag.path) }}" class="category-tag">{{ escape_html(tag.name) }}</a>
+                  {%- endfor %}
+                </div>
+              {%- endif %}
+            </li>
+          {%- endfor %}
+          {%- if category.length > 3 %}
+            <li><a class="category-more" href="{{ url_for(category.path) }}" aria-label="查看{{ escape_html(category.name) }}的全部 {{ category.length }} 篇文章">…</a></li>
+          {%- endif %}
+        {%- else %}
+          <li class="category-empty">暂无文章</li>
         {%- endif %}
       </ul>
     </li>
