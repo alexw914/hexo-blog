@@ -128,7 +128,7 @@ docker build -f ${DOCKER_FILE_NAME} -t ${DOCKER_IMAGE_NAME} .
 
 一般开发CUDA也会使用到TensorRT，需要根据CUDA环境和版本选择合适的TensorRT，这里直接在[官方](https://developer.nvidia.com/tensorrt/download/10x)下载对应平台的压缩包，并挂载到固定位置。
 
-注意：`--gpus all` 依赖宿主机已安装[NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)，未安装的话启动会报 `could not select device driver "" with capabilities: [[gpu]]` 错误。
+注意：`--gpus all` 依赖宿主机已安装[NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)，未安装的话启动会报 `could not select device driver "" with capabilities: [[gpu]]` 错误，--privileged获取ncu权限。
 
 ```bash
 export DOCKER_IMAGE_NAME=cuda12.4_cudnn_devel
@@ -138,6 +138,7 @@ docker run -d \
   --name ${DOCKER_CONTAINER_NAME} \
   --hostname ${DOCKER_HOST_NAME} \
   --gpus all \
+  --privileged \
   --ipc=host \
   --restart unless-stopped \
   -p 1022:22 \
