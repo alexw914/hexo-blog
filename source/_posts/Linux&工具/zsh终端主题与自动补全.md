@@ -20,7 +20,7 @@ tags:
 
   效果如下：
 
-  ![zsh](/images/zsh/zsh.png)
+  ![zsh](/images/Linux%26%E5%B7%A5%E5%85%B7/zsh%E7%BB%88%E7%AB%AF%E4%B8%BB%E9%A2%98%E4%B8%8E%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/zsh.png)
 
   本教程使用国内源
 
@@ -104,4 +104,4 @@ p10k configure
 
 若遇到显示不全，需要下载Nerd Fonts字体，远程连接，需要配置终端字体，下载即可
 
-[点击下载 MesloLGS NF Regular.ttf](/images/zsh/MesloLGS%20NF%20Regular.ttf)
+[点击下载 MesloLGS NF Regular.ttf](/images/Linux%26%E5%B7%A5%E5%85%B7/zsh%E7%BB%88%E7%AB%AF%E4%B8%BB%E9%A2%98%E4%B8%8E%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/MesloLGS%20NF%20Regular.ttf)

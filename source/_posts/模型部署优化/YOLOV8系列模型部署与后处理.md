@@ -28,7 +28,7 @@ YOLOv8系列模型是如今工业界使用较多的一些模型, 本文详细描
 
 部署的输入输出结构如下:
 
-![YOLOv8ONNX](/images/YOLOV8/yolov8det.png)
+![YOLOv8ONNX](/images/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%BC%98%E5%8C%96/YOLOV8%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%90%8E%E5%A4%84%E7%90%86/yolov8det.png)
 
 以上模型输入尺寸为[1, 3, 1280, 1280], stride为[8, 16, 32]，模型有两个检测类别，三个检测头输出为[1, 66, 160, 160]，[1, 66, 80, 80]，[1, 66, 40, 40]， 每个stride尺寸方格内进行预测，假设stride为8，则1260x1260的尺寸内共有160x160个预测方格。前64组数据用于预测框，后面两个数据表示预测类别置信度，(这个模型中将类别置信度和坐标拼在一起，也可使用[RKNN官方部署方案](https://github.com/airockchip/rknn_model_zoo/tree/main/examples/yolov8)，后处理需要进行一定定的更改), 设定的regmax为16，因此用于计算框的数据长度为16x4为64。
 
@@ -67,7 +67,7 @@ regmax为16，分为4组，分别预测l、t、b、r分别表示左上的x、y�
 
 #### 3. NMS
 
-做NMS是为了过滤一些预测重复的框，选择置信度最高的框。判断标准就是计算IOU，IOU大于阈值的框被认为是重复框，只保留置信度最高的框。![IOU](/images/YOLOV8/iou.png)
+做NMS是为了过滤一些预测重复的框，选择置信度最高的框。判断标准就是计算IOU，IOU大于阈值的框被认为是重复框，只保留置信度最高的框。![IOU](/images/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%BC%98%E5%8C%96/YOLOV8%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%90%8E%E5%A4%84%E7%90%86/iou.png)
 
 ```python
 def nms_boxes(boxes, scores, nms_thresh=0.5):
@@ -96,7 +96,7 @@ def nms_boxes(boxes, scores, nms_thresh=0.5):
 
 部署的输入输出结构如下:
 
-![YOLOv8OBBONNX](/images/YOLOV8/yolov8obb.png)
+![YOLOv8OBBONNX](/images/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%BC%98%E5%8C%96/YOLOV8%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%90%8E%E5%A4%84%E7%90%86/yolov8obb.png)
 
 以上模型输入尺寸为[1, 3, 1280, 1280], stride为[8, 16, 32]，模型有两个检测类别，三个检测头输出为[1, 67, 160, 160]，[1, 67, 80, 80]，[1, 67, 40, 40]，这个模型中我将角度拼到了预测框后面，最后是分类值。
 
@@ -160,7 +160,7 @@ def rotated_nms(boxes, scores, iou_thresh=0.1):
 ### 输入输出
 部署的输入输出结构如下:
 
-![YOLOv8PoseONNX](/images/YOLOV8/yolov8pose.png)
+![YOLOv8PoseONNX](/images/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%BC%98%E5%8C%96/YOLOV8%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%90%8E%E5%A4%84%E7%90%86/yolov8pose.png)
 
 以上模型直接由官方ONNX模型修改而来，输入尺寸为[1, 3, 640, 640], stride为[8, 16, 32]，模型只有一个类别，三个检测头输出为[1, 116, 80, 80]，[1, 116, 40, 40]，[1, 116, 20, 20]，这个模型中我将关键点坐标放到了最后面，因此共有64+1+17x3个通道，模型输出17个人体关键点。
 
@@ -181,14 +181,14 @@ kx = (kx - dw) / scale                                       #回归原图
 ky = (ky - dh) / scale
 keypoints = np.stack([kx, ky, kv], axis=-1)
 ```
-这个模型只要做好坐标回归计算正确即可。有其他导出方案会输出一个关键点头，并且在模型中完成关键点回归，这种方案不会受到回归方式改变的影响，但是模型精度和速度降低，关键点部分会有一部分无效运算。输出ONNX如下![YOLOv8PoseV2ONNX](/images/YOLOV8/yolov8posev2.png)
+这个模型只要做好坐标回归计算正确即可。有其他导出方案会输出一个关键点头，并且在模型中完成关键点回归，这种方案不会受到回归方式改变的影响，但是模型精度和速度降低，关键点部分会有一部分无效运算。输出ONNX如下![YOLOv8PoseV2ONNX](/images/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%BC%98%E5%8C%96/YOLOV8%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%90%8E%E5%A4%84%E7%90%86/yolov8posev2.png)
 
 ## 四、YOLOv8-Seg (实例分割)
 ### 输入输出
 
 部署的输入输出结构如下:
 
-![YOLOv8SegONNX](/images/YOLOV8/yolov8seg.png)
+![YOLOv8SegONNX](/images/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%BC%98%E5%8C%96/YOLOV8%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%90%8E%E5%A4%84%E7%90%86/yolov8seg.png)
 
 输入尺寸为[1, 3, 1280, 1280], stride为[8, 16, 32]，模型两个类别，三个检测头输出为[1, 98, 160, 160],[1, 98, 80, 80]，[1, 98, 40, 40]，这个模型中我将mask系数放到了最后。并且还有一个[1, 32, 320, 320]的proto_mask用于计算输出。
 
