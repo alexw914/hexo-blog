@@ -1,5 +1,5 @@
 ---
-title: Zsh 环境配置指南
+title: zsh终端主题与自动补全
 date: 2025-10-29 19:25:27
 tags:
   - Linux

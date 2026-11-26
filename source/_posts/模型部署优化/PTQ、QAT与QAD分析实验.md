@@ -1,5 +1,5 @@
 ---
-title: PTQ、QAT 与 QAD 对比分析
+title: PTQ、QAT与QAD分析实验
 date: 2026-11-26 15:20:00
 tags:
   - 模型量化

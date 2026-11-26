@@ -1,5 +1,5 @@
 ---
-title: Transformer 结构及其变体
+title: Transformer结构及其变体
 date: 2026-11-26 16:30:00
 tags:
   - Transformer
