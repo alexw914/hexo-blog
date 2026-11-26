@@ -2,9 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 const PRIORITY_CATEGORIES = [
-  '推理框架',
-  '算子优化',
   '模型部署优化',
+  '算子优化',
+  '推理框架',
   '算法模型结构'
 ];
 
