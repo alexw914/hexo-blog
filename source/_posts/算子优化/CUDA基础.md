@@ -1,5 +1,5 @@
 ---
-title: CUDA
+title: CUDA基础
 date: 2026-03-18 22:41:26
 tags:
   - CUDA
